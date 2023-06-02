@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import config from '../client/src/config/config.js';
 
 const app = express();
-console.log(config('clerk.key'));
+
 app.get("/api", (req, res) => {
   res.json({ message: 'Hello from server!' });
 });
