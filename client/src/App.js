@@ -1,7 +1,7 @@
 import React from "react";
 import logo from './logo.svg';
 import './App.css';
-import clerkConfig from './config/clerk';
+import config from './config/config';
 import {ClerkProvider, SignedIn, SignedOut, RedirectToSignIn, useClerk, UserButton} from '@clerk/clerk-react'
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <ClerkProvider publishableKey={clerkConfig.key}>
+      <ClerkProvider publishableKey={config('clerk.key')}>
         <SignedIn>
           <Welcome />
         </SignedIn>

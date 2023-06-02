@@ -1,9 +1,12 @@
+import app from './app'
+import clerk from './clerk'
+
 const config = {
-    app: require('./app.js'),
-    clerk: require('./clerk.js'),
+    app,
+    clerk,
 };
 
-module.exports = function(key, def = null){
+export default function(key, def = null){
     var current = config;
     const path = key.split('.');
     for (var i = 0; i < path.length; i++) {

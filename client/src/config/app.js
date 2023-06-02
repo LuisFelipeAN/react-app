@@ -1,6 +1,6 @@
 const config = {
-    env : 'dev',
+    env : process.env.NODE_ENV || 'dev',
     port:  process.env.PORT || 3001
 };
 
-module.exports = config;
+export default config;
