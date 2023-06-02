@@ -1,6 +1,8 @@
 import React from "react";
 import logo from './logo.svg';
 import './App.css';
+import clerkConfig from './config/clerk';
+import {ClerkProvider, SignedIn, SignedOut, RedirectToSignIn, useClerk, UserButton} from '@clerk/clerk-react'
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -28,8 +30,28 @@ function App() {
           Learn React
         </a>
       </header>
+      <ClerkProvider publishableKey={clerkConfig.key}>
+        <SignedIn>
+          <Welcome />
+        </SignedIn>
+        <SignedOut>
+          <RedirectToSignIn />
+        </SignedOut>
+      </ClerkProvider>
     </div>
   );
+}
+
+function Welcome() {
+  const { signOut } = useClerk();
+
+  return <div>
+    <div>Hello you are signed in</div>
+    <UserButton />
+    <button onClick={() => signOut()} >
+      Sign out
+    </button>
+  </div>;
 }
 
 export default App;
